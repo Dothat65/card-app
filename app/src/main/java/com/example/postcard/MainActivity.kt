@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
-
+    Column
     Text(
         text = message,
         fontSize = 100.sp,
@@ -58,4 +58,4 @@ fun postCardPreview() {
             modifier = Modifier.padding(16.dp) // Pass modifier with padding
         )
     }
-}
+} // test
