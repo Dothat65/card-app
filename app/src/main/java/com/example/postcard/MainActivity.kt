@@ -19,8 +19,12 @@ import com.example.postcard.ui.theme.PostcardTheme
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.graphics.Color
-
-
+import androidx.compose.ui.res.painterResource
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.layout.ContentScale
 
 
 class MainActivity : ComponentActivity() {
@@ -33,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ){
-                    GreetingText(message = "Hello from CSI", from = "Amaan Ahmed")
+                    BusinessCard()
                 }
             }
         }
@@ -41,33 +45,44 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
-    Column(
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier.padding(8.dp)
+fun BusinessCard(modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            text = message,
-            fontSize = 100.sp,
-            lineHeight = 116.sp,
-            color = Color.Blue
 
+        Image(
+            painter = painterResource(R.drawable.google_pic),
+            contentDescription = "Profile Picture",
+            modifier = Modifier
+                .padding(end = 16.dp)
         )
-        Text(
-            text = from,
-            fontSize = 36.sp
-        )
+
+
+        Column(
+            modifier = Modifier,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = "Google",
+                fontSize = 24.sp,
+                color = Color.Black
+            )
+            Text(
+                text = "google@gmail.com",
+                fontSize = 16.sp,
+                color = Color.Gray
+            )
+        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun postCardPreview() {
+fun BusinessCardPreview() {
     PostcardTheme {
-        GreetingText(
-            " Hello from the College of Staten Island",
-            from  ="Amaan Ahmed",
-            modifier = Modifier.padding(16.dp) // Pass modifier with padding
-        )
+        BusinessCard()
     }
 }
